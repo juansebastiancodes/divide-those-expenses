@@ -28,6 +28,13 @@
   color: #61dafb;
 }
 
+@media (max-width: 600px) {
+  .App-header {
+    padding: 20px 16px;
+    font-size: calc(10px + 1.5vmin);
+  }
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

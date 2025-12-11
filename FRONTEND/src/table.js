@@ -14,7 +14,6 @@ import DeleteIcon from '@mui/icons-material/Delete';
 const useStyles = makeStyles({
   root: {
     tableLayout: "fixed",
-    whiteSpace: "nowrap",
   },
 });
 
@@ -48,40 +47,34 @@ export default function BasicTable(props) {
   return (
     <TableContainer
       xs={{ margin: "3px" }}
-      sx={{ marginTop: "10px" }}
+      sx={{ marginTop: "10px", overflowX: "auto" }}
       component={Paper}
     >
       <Table className={classes.root} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell
-              style={{ width: "10px", minWidth: "20px" }}
-              align="center"
-            >
+            <TableCell align="center">
               Monto por persona
             </TableCell>
-            <TableCell style={{ width: "10px" }} align="center">
+            <TableCell align="center">
              $ {isNaN(totalAmount/members.length) ? 0 : totalAmount/members.length}
             </TableCell>
-            <TableCell style={{ width: "10px" }} align="center"></TableCell>
-            <TableCell style={{ width: "10px" }} align="center"></TableCell>
+            <TableCell align="center"></TableCell>
+            <TableCell align="center"></TableCell>
           </TableRow>
         </TableHead>
         <TableHead>
           <TableRow>
-            <TableCell
-              style={{ width: "10px", minWidth: "20px" }}
-              align="center"
-            >
+            <TableCell align="center">
               Nombre
             </TableCell>
-            <TableCell style={{ width: "10px" }} align="center">
+            <TableCell align="center">
               Monto pagado
             </TableCell>
-            <TableCell style={{ width: "10px" }} align="center">
+            <TableCell align="center">
               Monto a pagar
             </TableCell>
-            <TableCell style={{ width: "10px" }} align="center">
+            <TableCell align="center">
             </TableCell>
           </TableRow>
         </TableHead>
@@ -91,17 +84,17 @@ export default function BasicTable(props) {
               <TableRow key = {Math.random()}>
                 <TableCell align="center">{member.name}</TableCell>
                 <TableCell align="center">$ {member.amount}</TableCell>
-                <TableCell align="center">{
+                <TableCell align="center" sx={{ whiteSpace: "normal", wordBreak: "break-word" }}>{
                   getDebts(member)
                 }</TableCell>
-                <TableCell align="center">
-                  <Grid container>
-                    <Grid xs={6} item>
+                <TableCell align="center" sx={{ pr: 1 }}>
+                  <Grid container justifyContent="flex-end">
+                    <Grid item xs={12} sm={6}>
                       <Button onClick={e=>handleOpen(e,member)}>
                       <EditIcon/>
                       </Button>
                     </Grid>
-                    <Grid xs={6}  item>
+                    <Grid item xs={12} sm={6}>
                     <Button onClick={e=>handleDelete(e,member)}>
                       <DeleteIcon />
                       </Button>
