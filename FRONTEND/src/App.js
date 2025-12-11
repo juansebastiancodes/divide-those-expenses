@@ -68,7 +68,7 @@ function App() {
 
   }
   const handleDelete = (member) =>{
-    const result = dataMembers.filter(mem=>mem.name != member.name)
+    const result = dataMembers.filter(mem=>mem.name !== member.name)
     console.log(result);
     setDataMembers(result)
   }
